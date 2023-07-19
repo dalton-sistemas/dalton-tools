@@ -1,0 +1,34 @@
+<div class="po-wrapper">
+  
+    <po-page-default p-title="Notas Sintel">   
+        
+        <div class="sample-container">
+            <po-loading-overlay [hidden]="loading == false" [p-text]="loadingText"> </po-loading-overlay>
+        </div>
+        <po-container>
+            <div class="po-row">
+                <po-datepicker-range 
+                    name="datepickerRange" 
+                    [(ngModel)]="datepickerRange" 
+                    (p-change)="changeEvent('p-change')">   
+                </po-datepicker-range>
+                <po-button p-label="Buscar" class="po-md-2" (p-click)="onClickBuscar()"> </po-button>             
+                <po-tag class="po-md-4 po-tag" p-icon="po-icon-list" [p-value]="total"> </po-tag>   
+            </div>     
+        </po-container>
+        <hr>
+        <po-container *ngIf="dataNotas.length > 0">
+            <po-table 
+                p-title="Notas" 
+                [p-columns]="columns" 
+                [p-items]="dataNotas"
+                [p-sort]="true">
+            </po-table>      
+            
+        </po-container>
+        <po-container *ngIf="dataNotas.length === 0">
+            <po-info class="align-center" p-value="Nenhum valor encontrado!"></po-info>
+        </po-container>
+    </po-page-default>
+    
+</div>

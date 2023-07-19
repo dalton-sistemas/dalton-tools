@@ -1,0 +1,118 @@
+<div class="po-wrapper">
+    
+    <po-page-default p-title="Dicionário Totvs">   
+        <po-container>
+            <div class="sample-container">
+                <po-loading-overlay [hidden]="loading == false" [p-text]="loadingText"> </po-loading-overlay>
+            </div>
+            <po-tabs>
+                <po-tab p-label="Tabelas" [p-active]="tab === '1'">
+                    <po-container>
+                        <div class="po-row">
+                            <po-input p-label="Tabela" [(ngModel)]="tabela" class="po-lg-2"></po-input>
+                            <po-button p-label="Buscar" class="po-md-2" (p-click)="onClickBuscarTabela()"></po-button>   
+                            <po-input p-label="Nome" [(ngModel)]="nomeTabela" p-disabled="true" class="po-lg-4"></po-input>
+                            <po-input p-label="Banco" [(ngModel)]="bancoTabela" p-disabled="true" class="po-lg-4"></po-input>
+                        </div>
+                        <div *ngIf="nomeTabela != ''">
+                            <div class="po-row">
+                                <po-accordion class="po-md-12">
+                                    <po-accordion-item p-label="Detalhes - tabela">
+                                        <div class="po-row">
+                                            <po-info class="po-md-3" p-label="CRC" [p-value]="camposTabela._CRC"></po-info>                              
+                                            <po-info class="po-md-3" p-label="Dump Name" [p-value]="camposTabela._Dump_name"></po-info>                              
+                                            <po-info class="po-md-3" p-label="DB recid" [p-value]="camposTabela._Db_recid"> </po-info>   
+                                        </div>
+                                    </po-accordion-item>
+                                </po-accordion>                                                 
+                                <hr>
+                            </div>       
+                            <po-tabs>
+                                <po-tab p-label="Campos" [p-active]="tabFilha === '1'">
+                                    <div class="po-row">
+                                        <po-table
+                                            [p-auto-collapse]="true"
+                                            [p-columns]="columnsField"
+                                            [p-hide-columns-manager]="true"
+                                            [p-items]="dataField"
+                                            [p-sort]="true"
+                                            [p-striped]="true"
+                                            [p-actions-right]="true">
+                                            <ng-template
+                                                p-table-row-template
+                                                let-rowItem
+                                                let-i="rowIndex"
+                                                [p-table-row-template-show]="isUndelivered">
+
+                                                <div class="po-row">                                                                 
+                                                    <po-info class="po-md-6" p-label="Descrição" [p-value]="rowItem._Desc"  [p-orientation]="orientation"></po-info>    
+                                                    <po-info class="po-md-6" p-label="Ajuda" [p-value]="rowItem._Help" [p-orientation]="orientation"></po-info>            
+                                                </div>
+                                                <div class="po-row">                                                                        
+                                                    <po-info class="po-md-3" p-label="Valor Inicial" [p-value]="rowItem._Initial"  [p-orientation]="orientation"></po-info>   
+                                                    <po-info class="po-md-3" p-label="Extent" [p-value]="rowItem._Extent"  [p-orientation]="orientation"> </po-info>                              
+                                                    <po-info class="po-md-3" p-label="Texto Col" [p-value]="rowItem._Col_label"  [p-orientation]="orientation"></po-info>
+                                                </div>
+                                                <div class="po-row">                            
+                                                    <po-info class="po-md-3" p-label="Ordem" [p-value]="rowItem._Order"  [p-orientation]="orientation"></po-info>                              
+                                                    <po-info class="po-md-3" p-label="Decimais" [p-value]="rowItem._Decimals" *ngIf="rowItem._Data_Type === 'decimal' "  [p-orientation]="orientation"> </po-info> 
+                                                </div>
+                                                
+                                                <div class="po-row" *ngIf="rowItem._View_As != null">
+                                                    <po-info class="po-md-5" p-label="View As" [p-value]="rowItem._View_As"  [p-orientation]="orientation"></po-info>  
+                                                </div>
+
+
+                                            </ng-template>
+                                        </po-table>
+                                    </div>
+                                </po-tab>
+                                <po-tab p-label="Índices" [p-active]="tabFilha === '2'">
+                                    <div class="po-row">
+                                        <po-table
+                                            [p-auto-collapse]="true"
+                                            [p-columns]="columnsIndex"
+                                            [p-hide-columns-manager]="true"
+                                            [p-items]="dataIndex"
+                                            [p-sort]="true"
+                                            [p-striped]="true"
+                                            [p-actions-right]="true">
+                                            <ng-template
+                                                p-table-row-template
+                                                let-rowItem
+                                                let-i="rowIndex">
+
+                                                <po-container>
+                                                    <po-table
+                                                        [p-columns]="columnsFieldIndex"
+                                                        [p-hide-columns-manager]="true"
+                                                        [p-items]="rowItem.tt_index_field">
+                                                        
+                                                    </po-table>
+                                                </po-container>
+
+
+                                            </ng-template>
+                                        </po-table>
+                                    </div>
+                                </po-tab>
+                                <po-tab p-label="Triggers" [p-active]="tabFilha === '3'">
+
+                                </po-tab>
+                            </po-tabs>
+                        </div>
+                        <div *ngIf="nomeTabela == '' && !initialWindown">
+                            <hr>
+                            <div class="po-row">
+                                <po-info class="po-md-12" p-value="Nenhuma tabela encontrada!"></po-info>
+                            </div>
+                        </div>
+                    </po-container>
+                </po-tab>
+                <po-tab p-label="Campos X Tabelas" [p-active]="tab === '2'"></po-tab>
+                <po-tab p-label="Nomes" [p-active]="tab === '3'"></po-tab>
+            </po-tabs>
+        </po-container>
+    </po-page-default>
+
+</div>
