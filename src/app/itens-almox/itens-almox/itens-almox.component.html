@@ -1,0 +1,37 @@
+<div class="po-wrapper">    
+    <po-page-default p-title="Itens Almoxarifado">   
+        <po-container>
+            <div class="sample-container">
+                <po-loading-overlay [hidden]="loading == false" [p-text]="loadingText"> </po-loading-overlay>
+            </div>
+            <po-container>
+                <div class="po-row">
+                    <po-input p-label="Item" [(ngModel)]="item" class="po-md-3" (p-change-model)="validaCampos('item')"></po-input>
+                    <po-input p-label="Descrição Item" [(ngModel)]="descricao_item" class="po-md-3" (p-change-model)="validaCampos('item-desc')"></po-input>                
+                    <po-input p-label="Família" [(ngModel)]="familia" class="po-md-3" (p-change-model)="validaCampos('familia')"></po-input> 
+                    <po-input p-label="Descrição Família" [(ngModel)]="descricao_fam" class="po-md-3" (p-change-model)="validaCampos('familia-desc')"> </po-input>                    
+                </div>            
+                
+                <div class="po-row">                
+                    <po-button p-label="Buscar" class="po-md-2" (p-click)="onClickBuscar()"> </po-button>            
+                    <po-tag [p-value]="itensEncontrados" p-icon="po-icon-list" p-color="color-1" class="po-md-2 po-tag"> </po-tag> 
+                </div>  
+            </po-container>
+    
+                <hr>
+                
+            <po-container *ngIf="data.length > 0">            
+                <po-table 
+                    p-title="Notas" 
+                    [p-columns]="columns" 
+                    [p-items]="data"
+                    [p-sort]="true">
+                </po-table>                    
+            </po-container>
+            <po-container *ngIf="data.length === 0">
+                <po-info class="align-center" p-value="Nenhum valor encontrado!"></po-info>
+            </po-container>  
+
+        </po-container>
+    </po-page-default>
+</div>

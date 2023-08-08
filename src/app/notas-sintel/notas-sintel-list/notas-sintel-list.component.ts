@@ -82,17 +82,19 @@ export class NotasSintelListComponent implements AfterViewInit, OnInit {
     this.loading = true;
 
     console.log(data_ini,data_fim);
-    let url = 'http://10.1.4.245:8290/desenv-tuper/resources/notasMercedes?data_ini=' + this.date + '&data_fim=' + this.date;  
+    let url = '/notasMercedes?data_ini=' + this.date + '&data_fim=' + this.date;  
     
     if(data_ini != ''){
-      url = 'http://10.1.4.245:8290/desenv-tuper/resources/notasMercedes?data_ini=' + data_ini + '&data_fim=' + data_fim;        
+      url = '/notasMercedes?data_ini=' + data_ini + '&data_fim=' + data_fim;        
     }
 
-    return this.http.get(url,"","",
+    return this.http.get(1,url,"","",20000,
       (request:any) => {
         this.loading = false;
         this.dataNotas = request.items[0]['ds_notas']['nota_fiscal'];  
         this.total = this.dataNotas.length.toString();
+
+        console.log(this.dataNotas);
       },
       (error:any) => {
         this.loading = false;

@@ -45,14 +45,14 @@ export class DicionarioTotvsComponent {
     this.loading = true;    
     this.loadingText = 'Buscando Tabela ' + this.tabela;
 
-    const url = "http://10.1.4.245:8290/desenv-tuper/resources/buscaTabelasDicionario?tabela=" + this.tabela;
+    const url = "/buscaTabelasDicionario?tabela=" + this.tabela;
     
     this.camposTabela = "";
     this.nomeTabela = "";
     this.bancoTabela = "";
     this.dataField = [];
 
-    this.http.get(url,"","",
+    this.http.get(1,url,"","",20000,
       (request:any) => {
         console.log(request);
         this.initialWindown = false;

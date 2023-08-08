@@ -16,8 +16,16 @@ const routes: Routes = [
     loadChildren: () => import('../app/buscador-fontes/buscador-fontes.module').then(m => m.BuscadorFontesModule)
   },
   {
+    path: 'buscador-texto',
+    loadChildren: () => import('../app/buscador-texto/buscador-texto.module').then(m => m.BuscadorTextoModule)
+  },
+  {
     path: 'dicionario-totvs',
     loadChildren: () => import('../app/dicionario-totvs/dicionario-totvs.module').then(m => m.DicionarioTotvsModule)
+  },
+  {
+    path: 'itens-almox',
+    loadChildren: () => import('../app/itens-almox/itens-almox.module').then(m => m.ItensAlmoxModule)
   },
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', redirectTo: 'home' }

@@ -13,7 +13,9 @@ export class AppComponent {
     { label: 'Home', link: '/home' },
     { label: 'Notas Sintel', link: '/notas-sintel' },
     { label: 'Buscador de Fontes', link: '/buscador-fontes' },
-    { label: 'Dicionário Totvs', link: '/dicionario-totvs' }
+    { label: 'Buscador de Texto', link: '/buscador-texto' },
+    { label: 'Dicionário Totvs', link: '/dicionario-totvs' },
+    { label: 'Itens Almox', link: '/itens-almox' }
   ];
 
   private onClick() {

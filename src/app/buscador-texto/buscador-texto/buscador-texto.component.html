@@ -1,0 +1,60 @@
+<div class="po-wrapper">
+    
+    <po-page-default p-title="Buscador de Texto">   
+        
+        <div class="sample-container">
+            <po-loading-overlay [hidden]="loading == false" [p-text]="loadingText"> </po-loading-overlay>
+        </div>
+        <po-container>
+            <div class="po-row">                              
+                <po-input p-label="Texto" [(ngModel)]="texto" class="po-md-5"></po-input> 
+                <po-input p-label="Pasta" [(ngModel)]="pasta" class="po-md-2"></po-input>
+                <po-input p-label="Extenção" [(ngModel)]="extencao" class="po-md-4"></po-input>  
+            </div>            
+            
+            <div class="po-row">                
+                <po-button p-label="Buscar" class="po-md-2" (p-click)="onClickBuscar()"> </po-button>            
+                <po-tag [p-value]="fontesEncontrados" p-icon="po-icon-list" p-color="color-1" class="po-md-2 po-tag"> </po-tag> 
+            </div>  
+        </po-container>
+
+            <hr>
+            
+        <po-container *ngIf="data.length > 0">
+                
+            <po-list-view
+                p-property-title="caminhoPrograma"
+                [p-items]="data"
+                [p-actions]="actions">
+
+                <ng-template p-list-view-content-template let-item>                       
+                    <po-accordion>
+                        <po-accordion-item p-label="Programas Chamados"  *ngIf="item.chamadaDePrograma.length > 0">
+                            <po-widget class="po-lg-12 po-sm-mb-1 po-mb-1 po-lg-mb-1" *ngFor="let item of item.chamadaDePrograma">
+                                <div class="po-row">                                     
+                                    <po-tag [p-value]="retornaSplitStringByIndex(item,0,'-')" p-icon="po-icon-menu-close" p-color="color-1" class="po-md-2 po-tag"> </po-tag> 
+                                    <po-info [p-value]="returnSubstringByIndexOfAtFinal(item,'-',0)" ></po-info>                             
+                                </div>
+                            </po-widget>        
+                        </po-accordion-item>
+                        <po-accordion-item p-label="Linhas Encontradas"  *ngIf="item.linhasEncontradas.length > 0">
+                            <po-widget class="po-lg-12 po-sm-mb-1 po-mb-1 po-lg-mb-1" *ngFor="let item of item.linhasEncontradas">
+                                <div class="po-row">                                     
+                                    <po-tag [p-value]="retornaSplitStringByIndex(item,0,'-')" p-icon="po-icon-menu-close" p-color="color-1" class="po-md-2 po-tag"> </po-tag> 
+                                    <po-info [p-value]="returnSubstringByIndexOfAtFinal(item,'-',7)" ></po-info>                             
+                                </div>
+                            </po-widget>        
+                        </po-accordion-item>
+                                        
+                    </po-accordion>
+                </ng-template>
+            </po-list-view>
+            
+              
+        </po-container>
+        <po-container *ngIf="data.length === 0 && !initialWindown">
+            <po-info class="align-center" p-value="Nenhum valor encontrado!"></po-info>
+        </po-container>  
+    </po-page-default>
+
+</div>

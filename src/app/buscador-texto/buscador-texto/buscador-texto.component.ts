@@ -1,20 +1,20 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PoDialogService, PoTableColumn, PoTableAction, PoModalComponent, PoTableDetail, PoTagType, PoListViewAction } from '@po-ui/ng-components';
-import { BuscadorFontesService } from './buscador-fontes.service';
 import { HttpRequisitionService } from 'src/app/http/http-requisition.service';
 import { throwError, timeout } from 'rxjs';
+import { BuscadorTextoService } from './buscador-texto.service';
 
 @Component({
-  selector: 'app-buscador-fontes',
-  templateUrl: './buscador-fontes.component.html',
-  styleUrls: ['./buscador-fontes.component.scss'],   
-  providers: [BuscadorFontesService,HttpRequisitionService, PoDialogService]
+  selector: 'app-buscador-texto',
+  templateUrl: './buscador-texto.component.html',
+  styleUrls: ['./buscador-texto.component.scss'],
+  providers: [BuscadorTextoService,HttpRequisitionService, PoDialogService]
 })
-export class BuscadorFontesComponent implements OnInit  {  
-  @ViewChild(PoModalComponent, { static: true }) poModal!: PoModalComponent;  
-  @ViewChild('detailsModal', { static: true }) detailsModalElement!: PoModalComponent;
 
-  constructor(private colunas: BuscadorFontesService,
+export class BuscadorTextoComponent implements OnInit  {  
+
+  constructor(private colunas: BuscadorTextoService,
               private http: HttpRequisitionService){
   }
  
@@ -24,10 +24,8 @@ export class BuscadorFontesComponent implements OnInit  {
   initialWindown: boolean = true;
 
   pasta: string = "";
-  arquivo: string = "";
+  extencao: string = "";
   texto: string = "";
-  buscaProcedure: boolean = false;
-  chamadaDePrograma!: Array<string>;
   linhasEncontradas!: Array<string>;
   tab: string = '0';
   loading: boolean = false;
@@ -82,16 +80,9 @@ export class BuscadorFontesComponent implements OnInit  {
 
       this.loading = true;
       
-      const url = "/buscaEmCascata";
+      const url = "/buscaTexto?textoBuscado=" + this.texto;
 
-      let body:any = {
-        "pasta": this.pasta,
-        "arquivo": this.arquivo,
-        "textoBuscado": this.texto,
-        "buscaProcedure": this.buscaProcedure
-      }
-
-      this.http.post(2,url,body,"",200000,
+      this.http.get(2,url,"","",400000,
       (request:any) => {
         this.loading = false;        
         this.initialWindown = false;
