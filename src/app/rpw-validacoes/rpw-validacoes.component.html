@@ -1,0 +1,19 @@
+<div class="po-wrapper">  
+    <po-toolbar p-title="Dalton Tools" [p-show-notification]="false"></po-toolbar>   
+    <po-page-default>  
+        <div *ngFor="let rpw of rpwData">
+            <po-widget
+            class="po-lg-3 po-mt-2"
+            [p-height]="200"
+            [p-primary]="true"
+            p-primary-label="Details"
+            p-title="Programa"
+            [p-background]="validBg(rpw.lastRun)"
+            (p-primary-action)="openModal('savings')">
+
+            <div class="po-font-subtitle po-text-center">{{ rpw.programa }}</div>
+            <div class="po-text-center">Last updated at {{ rpw.lastUpdated }}</div>
+        </po-widget>
+        </div>
+    </po-page-default>
+</div>

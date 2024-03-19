@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('../app/notas-sintel/notas-sintel.module').then(m => m.NotasSintelModule)
   },
   {
+    path: 'rpw-validacoes',
+    loadChildren: () => import('../app/rpw-validacoes/rpw-validacoes.module').then(m => m.RpwValidacoesModule)
+  },
+  {
     path: 'buscador-fontes',
     loadChildren: () => import('../app/buscador-fontes/buscador-fontes.module').then(m => m.BuscadorFontesModule)
   },

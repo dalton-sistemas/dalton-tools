@@ -58,8 +58,8 @@ export class DicionarioTotvsComponent {
         this.initialWindown = false;
         this.loading = false;        
         this.camposTabela = request.items[0].tt_file[0];
-        this.nomeTabela = request.items[0].tt_file[0]._File_Name + " - " + request.items[0].tt_file[0]._Desc;
-        this.bancoTabela = request.items[0].tt_file[0].db_name;      
+        this.nomeTabela = request.items[0].tt_file[0]['_File-Name'] + " - " + request.items[0].tt_file[0]._Desc;
+        this.bancoTabela = request.items[0].tt_file[0]['db-name'];      
         this.dataField = request.items[1].tt_field;
         this.dataIndex = request.items[2].ds_index.tt_index;
         this.dataTrigger = request.items[3].tt_trigger;

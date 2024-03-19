@@ -10,8 +10,8 @@ export class HttpRequisitionService {
   conference: any;
   data: Array<any> = [];
 
-  baseUrl1:String = "http://s01w22rpw01:8080/desenv-tuper/resources"; //Tomcat
-  baseUrl2:String = "http://s01w22rpw01:8290/desenv-tuper/resources"; //Spring-Boot
+  baseUrl1:String = "http://s01w22jobdes01:8080/desenv-tuper/resources"; //Tomcat
+  baseUrl2:String = "http://s01w22jobdes01:8290/desenv-tuper/resources"; //Spring-Boot
 
   constructor(private http: HttpClient) {
    }

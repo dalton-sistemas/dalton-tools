@@ -1,6 +1,6 @@
 <div class="po-wrapper">
-    
-    <po-page-default p-title="Dicionário Totvs">   
+    <po-toolbar p-title="Dicionário Totvs" [p-show-notification]="false"></po-toolbar>   
+    <po-page-default>   
         <po-container>
             <div class="sample-container">
                 <po-loading-overlay [hidden]="loading == false" [p-text]="loadingText"> </po-loading-overlay>
@@ -20,8 +20,8 @@
                                     <po-accordion-item p-label="Detalhes - tabela">
                                         <div class="po-row">
                                             <po-info class="po-md-3" p-label="CRC" [p-value]="camposTabela._CRC"></po-info>                              
-                                            <po-info class="po-md-3" p-label="Dump Name" [p-value]="camposTabela._Dump_name"></po-info>                              
-                                            <po-info class="po-md-3" p-label="DB recid" [p-value]="camposTabela._Db_recid"> </po-info>   
+                                            <po-info class="po-md-3" p-label="Dump Name" [p-value]="'camposTabela._Dump-name'"></po-info>                              
+                                            <po-info class="po-md-3" p-label="DB recid" [p-value]="'camposTabela._Db-recid'"> </po-info>   
                                         </div>
                                     </po-accordion-item>
                                 </po-accordion>                                                 
@@ -51,15 +51,15 @@
                                                 <div class="po-row">                                                                        
                                                     <po-info class="po-md-3" p-label="Valor Inicial" [p-value]="rowItem._Initial"  [p-orientation]="orientation"></po-info>   
                                                     <po-info class="po-md-3" p-label="Extent" [p-value]="rowItem._Extent"  [p-orientation]="orientation"> </po-info>                              
-                                                    <po-info class="po-md-3" p-label="Texto Col" [p-value]="rowItem._Col_label"  [p-orientation]="orientation"></po-info>
+                                                    <po-info class="po-md-3" p-label="Texto Col" [p-value]="rowItem['_Col-label']"  [p-orientation]="orientation"></po-info>
                                                 </div>
                                                 <div class="po-row">                            
                                                     <po-info class="po-md-3" p-label="Ordem" [p-value]="rowItem._Order"  [p-orientation]="orientation"></po-info>                              
-                                                    <po-info class="po-md-3" p-label="Decimais" [p-value]="rowItem._Decimals" *ngIf="rowItem._Data_Type === 'decimal' "  [p-orientation]="orientation"> </po-info> 
+                                                    <po-info class="po-md-3" p-label="Decimais" [p-value]="rowItem._Decimals" *ngIf="rowItem['_Data-Type'] === 'decimal' "  [p-orientation]="orientation"> </po-info> 
                                                 </div>
                                                 
-                                                <div class="po-row" *ngIf="rowItem._View_As != null">
-                                                    <po-info class="po-md-5" p-label="View As" [p-value]="rowItem._View_As"  [p-orientation]="orientation"></po-info>  
+                                                <div class="po-row" *ngIf="rowItem['_View-As'] != null">
+                                                    <po-info class="po-md-5" p-label="View As" [p-value]="rowItem['_View-As']"  [p-orientation]="orientation"></po-info>  
                                                 </div>
 
 

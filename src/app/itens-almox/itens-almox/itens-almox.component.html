@@ -1,5 +1,6 @@
 <div class="po-wrapper">    
-    <po-page-default p-title="Itens Almoxarifado">   
+    <po-toolbar p-title="Itens Almoxarifado" [p-show-notification]="false"></po-toolbar>
+    <po-page-default>   
         <po-container>
             <div class="sample-container">
                 <po-loading-overlay [hidden]="loading == false" [p-text]="loadingText"> </po-loading-overlay>

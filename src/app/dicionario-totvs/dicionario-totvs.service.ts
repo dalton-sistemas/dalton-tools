@@ -10,9 +10,9 @@ export class DicionarioTotvsService {
 
   getColumnsField(): Array<PoTableColumn> {
     return [
-      { property: '_Field_Name', label: 'Campo'},
+      { property: '_Field-Name', label: 'Campo'},
       { property: '_Label', label: 'Nome'},            
-      { property: '_Data_Type', label: 'Tipo'},      
+      { property: '_Data-Type', label: 'Tipo'},      
       { property: '_Format', label: 'Formato'},      
       { property: '_Mandatory', label: 'Mandatório'} 
     ];
@@ -20,19 +20,19 @@ export class DicionarioTotvsService {
 
   getColumnsIndex(): Array<PoTableColumn> {
     return [
-      { property: '_Index_Name', label: 'Nome'},
+      { property: '_Index-Name', label: 'Nome'},
       { property: '_Active', label: 'Ativo'},            
       { property: '_Unique', label: 'Único'},  
-      { property: '_Idx_CRC', label: 'CRC'},      
-      { property: '_idx_num', label: 'Num'}
+      { property: '_Idx-CRC', label: 'CRC'},      
+      { property: '_idx-num', label: 'Num'}
     ];
   }
   
   getColumnsFieldIndex(): Array<PoTableColumn> {
     return [
-      { property: 'tt_field[0]._Field_Name', label: 'Campo'},
+      { property: 'tt_field[0]._Field-Name', label: 'Campo'},
       { property: 'tt_field[0]._Label', label: 'Nome'},            
-      { property: 'tt_field[0]._Data_Type', label: 'Tipo'},      
+      { property: 'tt_field[0]._Data-Type', label: 'Tipo'},      
       { property: 'tt_field[0]._Format', label: 'Formato'},      
       { property: 'tt_field[0]._Mandatory', label: 'Mandatório'} 
     ];
@@ -40,8 +40,8 @@ export class DicionarioTotvsService {
   getColumnsTrigger(): Array<PoTableColumn> {
     return [
       { property: '_Event', label: 'Evento'},
-      { property: '_Proc_Name', label: 'Caminho'},            
-      { property: '_Trig_Crc', label: 'CRC'} 
+      { property: '_Proc-Name', label: 'Caminho'},            
+      { property: '_Trig-Crc', label: 'CRC'} 
     ];
   }
 
